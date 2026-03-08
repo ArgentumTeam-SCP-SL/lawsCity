@@ -26,7 +26,7 @@ namespace lawsCity.Commands
 
             if (arguments.At(0) == "list")
             {
-                response = $"\tЗАКОНЫ\n\n{Main.config.Laws}";
+                response = $"\n\t<b><size=30><color=#F4A900>ЗАКОНЫ</color></size></b>\n\n{Main.config.Laws}";
                 return true;
             }
             
@@ -55,7 +55,7 @@ namespace lawsCity.Commands
                 Main.config.LawsNumber += 1;
             
                 string law1 = string.Join(" ", arguments.Skip(1));
-                Main.config.Laws += $"{Main.config.LawsNumber}. {law1}\n";
+                Main.config.Laws += $"<b><size=30><color=#FFCF40>{Main.config.LawsNumber}.</color> <color=#FADFAD>{law1}</color></size></b>\n";
                 foreach (var p in Player.List)
                 {
                     p.SendBroadcast(Main.config.NewLaw, 5);

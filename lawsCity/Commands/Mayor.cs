@@ -10,7 +10,7 @@ namespace lawsCity.Commands
     {
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            if (!sender.HasPermissions("create.mayor"))
+            if (!sender.HasPermissions("lawsCity.createMayor"))
             {
                 response = "У вас нет прав для использования этой команды. (create.mayor)";
                 return false;
