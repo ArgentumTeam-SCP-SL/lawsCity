@@ -37,4 +37,4 @@ Give permission ``lawsCity.createMayor`` to your role in ``~/LabAPI/configs/perm
 
 # Installation
 
-- ``lawsCity.dll`` move to ``~\LabAPI\plugins\global``
+``lawsCity.dll`` move to ``~\LabAPI\plugins\global``
