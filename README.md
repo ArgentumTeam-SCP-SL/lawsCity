@@ -26,14 +26,14 @@ Give permission ``lawsCity.createMayor`` to your role in ``~/LabAPI/configs/perm
 
 ### RemoteAdmin
 
-- ``mayor`` => id mayor.
-- ``mayor <id>`` => create/delete mayor.
+- ``mayor`` → id mayor.
+- ``mayor <id>`` → create/delete mayor.
 
 ### ClientCommand
 
-- ``.laws add <text>`` => add law (only for mayor).
-- ``.laws clear`` => delete laws (only for mayor).
-- ``.laws list`` => laws list.
+- ``.laws add <text>`` → add law (only for mayor).
+- ``.laws clear`` → delete laws (only for mayor).
+- ``.laws list`` → laws list.
 
 # Installation
 
