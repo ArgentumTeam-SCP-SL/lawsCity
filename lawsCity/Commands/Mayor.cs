@@ -30,7 +30,7 @@ namespace lawsCity.Commands
 
             if (!int.TryParse(arguments.At(0), out int id))
             {
-                response = "использование: mayor <id>";
+                response = "Использование: mayor <id>";
                 return false;
             }
 
@@ -38,7 +38,7 @@ namespace lawsCity.Commands
             
             if (player == null || player.IsNpc || player.IsHost)
             {
-                response = "игрок не найден!";
+                response = "Игрок не найден!";
                 return false;
             }
             

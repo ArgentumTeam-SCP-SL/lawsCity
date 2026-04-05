@@ -14,7 +14,7 @@ namespace lawsCity.Commands
 
             if (player == null || player.IsHost || player.IsNpc)
             {
-                response = "Player not found!";
+                response = "Игрок не найден!";
                 return false;
             }
 
@@ -24,7 +24,7 @@ namespace lawsCity.Commands
                 return false;
             }
 
-            if (arguments.At(0) == "list")
+            if (arguments.At(0).ToLower() == "list")
             {
                 response = Main.config.LawsTop.Replace("{Laws}", Main.config.Laws);
                 return true;
@@ -36,7 +36,7 @@ namespace lawsCity.Commands
                 return false;
             }
 
-            if (arguments.At(0) == "clear")
+            if (arguments.At(0).ToLower() == "clear")
             {
                 Main.config.LawsNumber = 0;
                 Main.config.Laws = null;
@@ -44,7 +44,7 @@ namespace lawsCity.Commands
                 return true;
             }
 
-            if (arguments.At(0) == "add")
+            if (arguments.At(0).ToLower() == "add")
             {
                 if (arguments.Count == 1)
                 {
