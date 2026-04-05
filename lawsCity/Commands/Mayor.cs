@@ -18,6 +18,12 @@ namespace lawsCity.Commands
             
             if (arguments.Count < 1)
             {
+                if (Main.config.MayorId == null || Player.Get(Main.config.MayorId) == null)
+                {
+                    response = "Мэра нету";
+                    return true;
+                }
+                
                 response = $"Мэр: {Player.Get(Main.config.MayorId)?.Nickname}";
                 return true;
             }
@@ -30,35 +36,36 @@ namespace lawsCity.Commands
 
             Player player = Player.Get(id);
             
-            if (player == null)
+            if (player == null || player.IsNpc || player.IsHost)
             {
                 response = "игрок не найден!";
                 return false;
             }
-
-            if (id == Main.config.MayorId)
+            
+            if (player.UserId == Main.config.MayorId)
             {
                 player.SendBroadcast(Main.config.OldMayor, 5);
-                Main.config.MayorId = 0;
+                Main.config.MayorId = null;
                 response = $"Успешно! {player.Nickname} больше не мэр";
                 return true;
             }
 
-            if (Main.config.MayorId != 0)
+            if (Main.config.MayorId != null)
             {
                 Player oldPlayer = Player.Get(Main.config.MayorId);
 
                 if (oldPlayer != null)
                 {
                     oldPlayer.SendBroadcast(Main.config.OldMayor, 5);
-                    Main.config.MayorId = id;
-
-                    player.SendBroadcast(Main.config.NewMayor, 5);
-                    response = $"Успешно! {player.Nickname} стал мэром, заменив {oldPlayer.Nickname}";
-                    return true;
                 }
+
+                Main.config.MayorId = player.UserId;
+                player.SendBroadcast(Main.config.NewMayor, 5);
+                response = $"Успешно! {player.Nickname} стал мэром, заменив {oldPlayer?.Nickname}";
+                return true;
             }
-            Main.config.MayorId = id;
+            
+            Main.config.MayorId = player.UserId;
             
             player.SendBroadcast(Main.config.NewMayor, 5);
             response = $"Успешно! {player.Nickname} стал мэром";

@@ -11,27 +11,27 @@ namespace lawsCity
         public override void Enable()
         {
             config = new Config();
-            LabApi.Events.Handlers.ServerEvents.RoundEnding += OnRoundEnding;
+            LabApi.Events.Handlers.ServerEvents.WaitingForPlayers += OnWaitingForPlayers;
         }
 
         public override void Disable()
         {
             config = null;
-            LabApi.Events.Handlers.ServerEvents.RoundEnding -= OnRoundEnding;
+            LabApi.Events.Handlers.ServerEvents.WaitingForPlayers -= OnWaitingForPlayers;
         }
 
-        private void OnRoundEnding(LabApi.Events.Arguments.ServerEvents.RoundEndingEventArgs ev)
+        private void OnWaitingForPlayers()
         {
-            Config.MayorId = 0;
-            Config.Laws = null;
-            Config.LawsNumber = 0;
+            config.MayorId = null;
+            config.LawsNumber = 0;
+            config.Laws = null;
         }
         
 
         public override string Name { get; } = "lawsCity";
-        public override string Description { get; } = "laws city plugin";
+        public override string Description { get; } = "lawsCity plugin";
         public override string Author { get; } = "AgTeam";
-        public override Version Version { get; } = new Version(1, 0, 0);
+        public override Version Version { get; } = new Version(1, 2, 0);
         public override Version RequiredApiVersion { get; } = LabApiProperties.CurrentVersion;
     }
 }
