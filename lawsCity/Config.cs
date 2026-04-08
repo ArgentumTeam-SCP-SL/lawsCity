@@ -18,11 +18,11 @@ namespace lawsCity
 
         [Description("Вид верха списка законов")]
         public string LawsTop { get; set; } = 
-            "\n\t<b><size=30><color=#F4A900>ЗАКОНЫ</color></size></b>\n\n{Laws}";
+            "\n\t<b><size=30><color=#F4A900>ЗАКОНЫ</color></size></b>\n\n%Laws%";
         
         [Description("Вид закона в списке законов")]
         public string LawsList { get; set; } =
-            "<b><size=30><color=#FFCF40>{LawNumber}.</color></size> <size=25><color=#FADFAD>{Law}</color></size></b>\n";
+            "<b><size=30><color=#FFCF40>%LawNumber%.</color></size> <size=25><color=#FADFAD>%Law%</color></size></b>\n";
 
         public string MayorId = null;
 

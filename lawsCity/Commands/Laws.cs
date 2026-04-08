@@ -26,11 +26,11 @@ namespace lawsCity.Commands
 
             if (arguments.At(0).ToLower() == "list")
             {
-                response = Main.config.LawsTop.Replace("{Laws}", Main.config.Laws);
+                response = Main.Config.LawsTop.Replace("%Laws%", Main.Config.Laws);
                 return true;
             }
             
-            if (player.UserId != Main.config.MayorId)
+            if (player.UserId != Main.Config.MayorId)
             {
                 response = "Вы не являетесь мэром!";
                 return false;
@@ -38,8 +38,8 @@ namespace lawsCity.Commands
 
             if (arguments.At(0).ToLower() == "clear")
             {
-                Main.config.LawsNumber = 0;
-                Main.config.Laws = null;
+                Main.Config.LawsNumber = 0;
+                Main.Config.Laws = null;
                 response = "Законы очищены";
                 return true;
             }
@@ -52,17 +52,17 @@ namespace lawsCity.Commands
                     return false;
                 }
                 
-                Main.config.LawsNumber += 1;
+                Main.Config.LawsNumber += 1;
                 string law = string.Join(" ", arguments.Skip(1));
-                Main.config.Laws += Main.config.LawsList
-                    .Replace("{LawNumber}", Main.config.LawsNumber.ToString())
-                    .Replace("{Law}", law);
+                Main.Config.Laws += Main.Config.LawsList
+                    .Replace("%LawNumber%", Main.Config.LawsNumber.ToString())
+                    .Replace("%Law%", law);
                 foreach (var p in Player.List)
                 {
-                    p.SendBroadcast(Main.config.NewLaw, 5);
+                    p.SendBroadcast(Main.Config.NewLaw, 5);
                 }
 
-                response = $"Закон №{Main.config.LawsNumber} принят!\n";
+                response = $"Закон №{Main.Config.LawsNumber} принят!\n";
                 return true;
             }
 
