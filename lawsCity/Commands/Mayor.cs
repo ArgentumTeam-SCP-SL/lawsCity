@@ -12,7 +12,7 @@ namespace lawsCity.Commands
         {
             if (!sender.HasPermissions("lawsCity.createMayor"))
             {
-                response = "У вас нет прав для использования этой команды. (create.mayor)";
+                response = "You do not have permission to use this command. (lawsCity.createMayor)";
                 return false;
             }
             
@@ -20,17 +20,17 @@ namespace lawsCity.Commands
             {
                 if (Main.Config.MayorId == null || Player.Get(Main.Config.MayorId) == null)
                 {
-                    response = "Мэра нету";
+                    response = "There is no mayor";
                     return true;
                 }
                 
-                response = $"Мэр: {Player.Get(Main.Config.MayorId)?.Nickname}";
+                response = $"Mayor: {Player.Get(Main.Config.MayorId)?.Nickname}";
                 return true;
             }
 
             if (!int.TryParse(arguments.At(0), out int id))
             {
-                response = "Использование: mayor <id>";
+                response = "Use: mayor <id>";
                 return false;
             }
 
@@ -38,7 +38,7 @@ namespace lawsCity.Commands
             
             if (player == null || player.IsNpc || player.IsHost)
             {
-                response = "Игрок не найден!";
+                response = "Player not found!";
                 return false;
             }
             
@@ -46,7 +46,7 @@ namespace lawsCity.Commands
             {
                 player.SendBroadcast(Main.Config.OldMayor, 5);
                 Main.Config.MayorId = null;
-                response = $"Успешно! {player.Nickname} больше не мэр";
+                response = $"Success! {player.Nickname} not the mayor anymore";
                 return true;
             }
 
@@ -61,14 +61,14 @@ namespace lawsCity.Commands
 
                 Main.Config.MayorId = player.UserId;
                 player.SendBroadcast(Main.Config.NewMayor, 5);
-                response = $"Успешно! {player.Nickname} стал мэром, заменив {oldPlayer?.Nickname}";
+                response = $"Success! {player.Nickname} became mayor, replacing {oldPlayer?.Nickname}";
                 return true;
             }
             
             Main.Config.MayorId = player.UserId;
             
             player.SendBroadcast(Main.Config.NewMayor, 5);
-            response = $"Успешно! {player.Nickname} стал мэром";
+            response = $"Success! {player.Nickname} became mayor";
             return true;
         }
 

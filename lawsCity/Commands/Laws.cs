@@ -14,13 +14,13 @@ namespace lawsCity.Commands
 
             if (player == null || player.IsHost || player.IsNpc)
             {
-                response = "Игрок не найден!";
+                response = "Player not found!";
                 return false;
             }
 
             if (arguments.Count == 0)
             {
-                response = "Использование: .laws <add 'закон'>|<clear>|<list>";
+                response = "Use: .laws <add 'law'>|<clear>|<list>";
                 return false;
             }
 
@@ -32,7 +32,7 @@ namespace lawsCity.Commands
             
             if (player.UserId != Main.Config.MayorId)
             {
-                response = "Вы не являетесь мэром!";
+                response = "You are not the mayor.!";
                 return false;
             }
 
@@ -40,7 +40,7 @@ namespace lawsCity.Commands
             {
                 Main.Config.LawsNumber = 0;
                 Main.Config.Laws = null;
-                response = "Законы очищены";
+                response = "The laws are cleared";
                 return true;
             }
 
@@ -48,7 +48,7 @@ namespace lawsCity.Commands
             {
                 if (arguments.Count == 1)
                 {
-                    response = "Использование: .laws <add 'закон'>|<clear>|<list>";
+                    response = "Use: .laws <add 'law'>|<clear>|<list>";
                     return false;
                 }
                 
@@ -62,17 +62,17 @@ namespace lawsCity.Commands
                     p.SendBroadcast(Main.Config.NewLaw, 5);
                 }
 
-                response = $"Закон №{Main.Config.LawsNumber} принят!\n";
+                response = $"Law №{Main.Config.LawsNumber} adopted!\n";
                 return true;
             }
 
-            response = "Использование: .laws <add 'закон'>|<clear>|<list>";
+            response = "Use: .laws <add 'law'>|<clear>|<list>";
             return false;
         }
         
 
         public string Command { get; } = "laws";
         public string[] Aliases { get; } = new string[] { };
-        public string Description { get; } = "Законы города. Использование: .laws <add 'закон'>|<clear>|<list>";
+        public string Description { get; } = "Laws of the city. Use: .laws <add 'law'>|<clear>|<list>";
     }
 }

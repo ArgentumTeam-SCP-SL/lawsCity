@@ -4,23 +4,23 @@ namespace lawsCity
 {
     public class Config
     {
-        [Description("Новый закон от мэра")]
+        [Description("NEW LAW FROM THE MAYOR")]
         public string NewLaw { get; set; } = 
-            "<size=50><b><color=yellow>⭐ НОВЫЙ ЗАКОН ОТ МЭРА ⭐</color></size>\n<size=25>(посмотреть в консоле на [Ё]  -  \".laws list\")</b></size>";
+            "<size=50><b><color=yellow>⭐ NEW LAW FROM THE MAYOR ⭐</color></size>\n<size=25>(look at the console for [~]  -  \".laws list\")</b></size>";
         
-        [Description("Новый мэр")]
+        [Description("YOU HAVE BEEN APPOINTED MAYOR")]
         public string NewMayor { get; set; } = 
-            "<size=50><b><color=green>✅ ВЫ БЫЛИ НАЗНАЧЕНЫ МЭРОМ</color></size>\n<size=25>(пишите законы в консоле на [Ё]  -  \".laws add <закон>\")</b></size>";
+            "<size=50><b><color=green>✅ YOU HAVE BEEN APPOINTED MAYOR</color></size>\n<size=25>(write the laws in the console on [~]  -  \".laws add <law>\")</b></size>";
         
-        [Description("Больше не мэр")]
+        [Description("YOU ARE NO LONGER MAYOR")]
         public string OldMayor { get; set; } = 
-            "<size=50><b><color=red>❌ ВЫ ПЕРЕСТАЛИ БЫТЬ МЭРОМ</color></size>\n<size=25>а не нужно было воровать...</b></size>";
+            "<size=50><b><color=red>❌ YOU ARE NO LONGER MAYOR</color></size>\n<size=25>corruption never leads to good things....</b></size>";
 
-        [Description("Вид верха списка законов")]
+        [Description("View of the top of the list of laws")]
         public string LawsTop { get; set; } = 
-            "\n\t<b><size=30><color=#F4A900>ЗАКОНЫ</color></size></b>\n\n%Laws%";
+            "\n\t<b><size=30><color=#F4A900>LAWS</color></size></b>\n\n%Laws%";
         
-        [Description("Вид закона в списке законов")]
+        [Description("Type of law in the list of laws")]
         public string LawsList { get; set; } =
             "<b><size=30><color=#FFCF40>%LawNumber%.</color></size> <size=25><color=#FADFAD>%Law%</color></size></b>\n";
 
