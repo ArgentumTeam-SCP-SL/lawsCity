@@ -74,6 +74,6 @@ namespace lawsCity.Commands
 
         public string Command { get; } = "mayor";
         public string[] Aliases { get; } = new string[] { };
-        public string Description { get; } = "Создать мэра который сможет писать законы, использование: mayor <id>";
+        public string Description { get; } = "Create a mayor who can write laws, use: mayor <id>";
     }
 }
